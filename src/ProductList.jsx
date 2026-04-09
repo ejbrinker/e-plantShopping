@@ -319,36 +319,47 @@ function ProductList({ onHomeClick }) {
           </div>
       
           {!showCart ? (
-            <div className="product-grid">
-                {plantsArray.map((categoryObj) =>
-                    categoryObj.plants.map((plant) => {
-                    const isInCart = cartItems.some(
+        <div className="product-grid">
+
+          {plantsArray.map((categoryObj) => (
+            <div key={categoryObj.category} className="category-section">
+
+              {/* CATEGORY TITLE */}
+              <h2 className="category-title">{categoryObj.category}</h2>
+
+              {/* PLANTS */}
+              <div className="category-grid">
+                {categoryObj.plants.map((plant) => {
+                  const isInCart = cartItems.some(
                     (item) => item.name === plant.name
-        );
+                  );
 
-        return (
-          <div className="product-card" key={plant.name}>
-            <img src={plant.image} alt={plant.name} />
-            <h3>{plant.name}</h3>
-            <p>{plant.description}</p>
-            <p>{plant.cost}</p>
+                  return (
+                    <div className="product-card" key={plant.name}>
+                      <img src={plant.image} alt={plant.name} />
+                      <h3>{plant.name}</h3>
+                      <p>{plant.description}</p>
+                      <p>{plant.cost}</p>
 
-            <button
-              disabled={isInCart}
-              onClick={() => handleAddToCart(plant)}
-            >
-              {isInCart ? "Added to Cart" : "Add to Cart"}
-            </button>
-          </div>
-        );
-      })
-    )}
-  </div>
-) : (
-  <CartItem onContinueShopping={handleContinueShopping} />
-)}
+                      <button
+                        disabled={isInCart}
+                        onClick={() => handleAddToCart(plant)}
+                      >
+                        {isInCart ? "Added to Cart" : "Add to Cart"}
+                      </button>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+
         </div>
-      );
-
+      ) : (
+        <CartItem onContinueShopping={handleContinueShopping} />
+      )}
+    </div>
+  );
 }
+
 export default ProductList;

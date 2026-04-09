@@ -250,3 +250,36 @@ body {
         text-align: center; /* Align text to the center */
       }
   }
+  /* Category container */
+.category-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 10px 20px;
+}
+
+/* Category title */
+.category-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #2e7d32; /* deep green */
+  text-align: center;
+  border-bottom: 2px solid #4CAF50;
+  padding-bottom: 10px;
+}
+
+/* Grid for plants inside each category */
+.category-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: center;
+}
+.product-card img {
+  width: 180px;        /* thumbnail width */
+  height: 180px;       /* thumbnail height */
+  object-fit: cover;   /* crops nicely instead of stretching */
+  border-radius: 8px;  /* optional: rounded corners */
+  margin-bottom: 10px;
+}
